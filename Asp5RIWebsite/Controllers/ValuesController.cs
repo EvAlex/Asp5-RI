@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace Asp5RIWebsite.Controllers
 {
@@ -13,6 +15,9 @@ namespace Asp5RIWebsite.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+	    var client = new MongoClient("mongodb://localhost:27017");
+	    var database = client.GetDatabase("foo");
+	    var collection = database.GetCollection<BsonDocument>("bar");
             return new string[] { "value1", "value2" };
         }
 
