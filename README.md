@@ -9,4 +9,4 @@ Reference implementation of an ASP.NET 5 application for Linux with MongoDB stor
 
 ### Linux
 * Develop in Visual Studio Code
-* Run tests executing `dnu restore Asp5RIWebsite.Tests/ && dnx test -p Asp5RIWebsite.Tests/project.json`
+* Run tests executing `dnu restore Asp5RIWebsite.Tests/ && dnu build Asp5RIWebsite.Tests/project.json && dnx test Asp5RIWebsite.Tests/`
