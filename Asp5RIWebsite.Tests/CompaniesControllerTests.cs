@@ -1,4 +1,5 @@
 ﻿using Asp5RIWebsite.Controllers;
+using Asp5RIWebsite.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +16,17 @@ namespace Asp5RIWebsite.Tests
         public void Get()
         {
             //  arrange
-            var controller = new CompaniesController();
+            var storage = new TestDataStorage();
+            var controller = new CompaniesController(storage);
+            var expected = storage.GetCompanies();
 
             //  act
-            var response = controller.Get();
+            var actual = controller.Get();
 
-            Assert.NotNull(response);
+            Assert.NotNull(actual);
+            Assert.Equal(expected.Length, actual.Count());
+            Assert.All(actual, a => Assert.Equal(expected.Count(c => c.Id == a.Id), 1));
+            Assert.All(actual, a => Assert.Equal(expected.First(c => c.Id == a.Id).Name, a.Name));
         }
     }
 }

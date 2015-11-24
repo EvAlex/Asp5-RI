@@ -1,0 +1,21 @@
+﻿{
+    "version": "1.0.0-*",
+    "description": "Asp5RIWebsite.Storage Class Library",
+    "authors": [ "Alexander" ],
+    "tags": [ "" ],
+    "projectUrl": "",
+    "licenseUrl": "",
+    "frameworks": {
+        "dnx451": {
+            "dependencies": {
+                "MongoDB.Driver": "2.2.0-rc0"
+            }
+        },
+        "dnxcore50": { }
+    },
+    "dependencies": {
+        "System.Collections": "4.0.11-beta-23516",
+        "System.Runtime": "4.0.21-beta-23516",
+        "System.Runtime.InteropServices": "4.0.21-beta-23516"
+    }
+}

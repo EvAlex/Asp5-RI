@@ -3,26 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
-#if DNX451
-using MongoDB.Bson;
-using MongoDB.Driver;
-#endif
+using Asp5RIWebsite.Storage;
 
 namespace Asp5RIWebsite.Controllers
 {
     [Route("api/[controller]")]
     public class CompaniesController : Controller
     {
+        private readonly IStorage storage;
+
+        public CompaniesController(IStorage storage)
+        {
+            this.storage = storage;
+        }
+
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Company> Get()
         {
-#if DNX451
-            var client = new MongoClient("mongodb://localhost:27017");
-            var database = client.GetDatabase("foo");
-            var collection = database.GetCollection<BsonDocument>("bar");
-#endif
-            return new string[] { "value1", "value2" };
+            return storage.GetCompanies();
         }
 
         // GET api/values/5
